@@ -7,6 +7,7 @@ export const TodoList = () => {
             <div className="todo-list-box">
                 this is the box
             </div>
+            <button>Add Item</button>
         </div>
     )
 }
