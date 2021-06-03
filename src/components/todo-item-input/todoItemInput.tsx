@@ -13,7 +13,7 @@ export const TodoItemInput = (props: ITodoListInputProps) => {
         setName('');
     }
 
-    const inputDisabled = () => {
+    const inputEnabled = () => {
         return !!name;
     }
 
@@ -25,7 +25,7 @@ export const TodoItemInput = (props: ITodoListInputProps) => {
                     value={name}
                     onChange={e => setName(e.target.value)}
                 />
-                <input type="submit" title="Add Item" value="Add Item" disabled={!inputDisabled()}/>
+                <input type="submit" title="Add Item" value="Add Item" disabled={!inputEnabled()}/>
             </form>
         </div>
     )
