@@ -3,7 +3,15 @@ import {TodoItemInput} from '../todo-item-input/todoItemInput'
 import { useState } from 'react';
 
 export const TodoList = () => {
-    const [list, setList] = useState(['do something', 2, 3])
+    const [list, setList]: [string[], Function] = useState([])
+
+
+    const addItem = (item: string) => {
+        if(item) {
+            const newList = [...list, item];
+            setList(newList);
+        }
+    }
 
     return (
         <div className="todo-list-container">
@@ -15,7 +23,7 @@ export const TodoList = () => {
                 })}
                 </ul>
             </div>
-            <TodoItemInput />
+            <TodoItemInput addItemCallback={addItem}/>
         </div>
     )
 }

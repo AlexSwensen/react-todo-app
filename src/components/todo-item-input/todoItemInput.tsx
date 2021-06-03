@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react"
 
 interface ITodoListInputProps {
-
+    addItemCallback: Function
 }
 
 export const TodoItemInput = (props: ITodoListInputProps) => {
@@ -9,7 +9,12 @@ export const TodoItemInput = (props: ITodoListInputProps) => {
 
     const handleSubmit = (event: FormEvent) => {
         event.preventDefault();
-        alert(`submitting event name ${name}`)
+        props.addItemCallback(name);
+        setName('');
+    }
+
+    const inputDisabled = () => {
+        return !!name;
     }
 
     return (
@@ -22,7 +27,7 @@ export const TodoItemInput = (props: ITodoListInputProps) => {
                     onChange={e => setName(e.target.value)}
                 />
                 </div>
-                <input type="submit" />
+                <input type="submit" title="Add Item" value="Add Item" disabled={!inputDisabled()}/>
             </form>
         </div>
     )
